@@ -1,7 +1,22 @@
 ---
+- name: Validate artifact path
+  ansible.builtin.assert:
+    that:
+      - artifact_path is defined
+      - artifact_path | length > 0
+    fail_msg: "artifact_path was not provided."
+
+- name: Show artifact_path
+  ansible.builtin.debug:
+    var: artifact_path
+
+- name: Show artifact_local_path
+  ansible.builtin.debug:
+    var: artifact_local_path
+
 - name: Copy application artifact
   ansible.builtin.copy:
-    src: "{{ artifact_local_path }}"
+    src: "{{ artifact_path }}"
     dest: "{{ artifact_remote_path }}"
     owner: "{{ app_user }}"
     group: "{{ app_group }}"

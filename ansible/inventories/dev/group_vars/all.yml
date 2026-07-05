@@ -28,7 +28,9 @@ app_port: 8080
 
 # Build artifact
 # artifact_local_path: artifacts/spring-petclinic.jar
-artifact_local_path: "{{ playbook_dir }}/../../artifacts/spring-petclinic.jar"
+
+# for local debugging
+# artifact_local_path: "{{ playbook_dir }}/../../artifacts/spring-petclinic.jar"
 artifact_name: spring-petclinic.jar
 
 artifact_remote_path: "{{ app_releases }}/{{ artifact_name }}"
