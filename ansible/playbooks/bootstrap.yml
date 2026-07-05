@@ -1,0 +1,8 @@
+---
+- name: Bootstrap PetClinic server
+  hosts: petclinic
+  become: true
+
+  roles:
+    - common
+    - java
