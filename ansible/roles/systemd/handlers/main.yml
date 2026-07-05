@@ -1,0 +1,9 @@
+---
+- name: Reload systemd
+  ansible.builtin.systemd:
+    daemon_reload: true
+
+- name: Restart petclinic
+  ansible.builtin.systemd:
+    name: "{{ service_name }}"
+    state: restarted

@@ -1,0 +1,37 @@
+---
+# Application
+app_name: petclinic
+
+# User
+app_user: petclinic
+app_group: petclinic
+
+# Directories
+app_root: /opt/petclinic
+app_current: "{{ app_root }}/current"
+app_releases: "{{ app_root }}/releases"
+app_backup: "{{ app_root }}/backups"
+app_logs: /var/log/petclinic
+
+# Java
+java_package: openjdk-17-jdk
+
+# Service
+service_name: petclinic
+
+# Artifact
+jar_name: spring-petclinic.jar
+# jar_path: "{{ app_current }}/{{ jar_name }}"
+
+# Port
+app_port: 8080
+
+# Build artifact
+# artifact_local_path: artifacts/spring-petclinic.jar
+artifact_local_path: "{{ playbook_dir }}/../../artifacts/spring-petclinic.jar"
+artifact_name: spring-petclinic.jar
+
+artifact_remote_path: "{{ app_releases }}/{{ artifact_name }}"
+jar_path: "{{ app_current }}/{{ artifact_name }}"
+
+

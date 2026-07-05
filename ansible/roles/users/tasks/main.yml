@@ -1,0 +1,14 @@
+---
+- name: Create application group
+  ansible.builtin.group:
+    name: "{{ app_group }}"
+    state: present
+
+- name: Create application user
+  ansible.builtin.user:
+    name: "{{ app_user }}"
+    group: "{{ app_group }}"
+    home: "{{ app_root }}"
+    create_home: false
+    shell: /usr/sbin/nologin
+    state: present

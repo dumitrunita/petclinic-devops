@@ -1,0 +1,31 @@
+---
+- name: Copy application artifact
+  ansible.builtin.copy:
+    src: "{{ artifact_local_path }}"
+    dest: "{{ artifact_remote_path }}"
+    owner: "{{ app_user }}"
+    group: "{{ app_group }}"
+    mode: "0644"
+
+- name: Create current application symlink
+  ansible.builtin.file:
+    src: "{{ artifact_remote_path }}"
+    dest: "{{ jar_path }}"
+    state: link
+    force: true
+
+- name: Restart application
+  ansible.builtin.systemd:
+    name: "{{ service_name }}"
+    state: restarted
+
+- name: Wait for application port
+  ansible.builtin.wait_for:
+    host: 127.0.0.1
+    port: "{{ app_port }}"
+    timeout: 60
+
+- name: Verify application
+  ansible.builtin.uri:
+    url: "http://localhost:{{ app_port }}"
+    status_code: 200

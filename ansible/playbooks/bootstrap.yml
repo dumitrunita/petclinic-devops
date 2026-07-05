@@ -6,3 +6,6 @@
   roles:
     - common
     - java
+    - users
+    - directories
+    - systemd

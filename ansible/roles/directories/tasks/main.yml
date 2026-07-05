@@ -1,0 +1,14 @@
+---
+- name: Create application directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ app_user }}"
+    group: "{{ app_group }}"
+    mode: "0755"
+  loop:
+    - "{{ app_root }}"
+    - "{{ app_current }}"
+    - "{{ app_releases }}"
+    - "{{ app_backup }}"
+    - "{{ app_logs }}"
