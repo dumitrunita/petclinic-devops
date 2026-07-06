@@ -5,6 +5,14 @@
     shell: /usr/sbin/nologin
     system: true
 
+- name: Create Prometheus data directory
+  ansible.builtin.file:
+    path: "{{ prometheus_data_dir }}"
+    state: directory
+    owner: "{{ prometheus_user }}"
+    group: "{{ prometheus_user }}"
+    mode: "0755"
+
 - name: Create Prometheus config directory
   ansible.builtin.file:
     path: "{{ prometheus_config_dir }}"
