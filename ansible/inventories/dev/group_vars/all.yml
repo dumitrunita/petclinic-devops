@@ -37,3 +37,9 @@ artifact_remote_path: "{{ app_releases }}/{{ artifact_name }}"
 jar_path: "{{ app_current }}/{{ artifact_name }}"
 
 
+# Prometheus
+prometheus_version: "3.5.0"
+prometheus_user: prometheus
+prometheus_config_dir: /etc/prometheus
+prometheus_binary: /usr/local/bin/prometheus
+prometheus_port: 9090

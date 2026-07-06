@@ -1,0 +1,15 @@
+[Unit]
+Description=Prometheus
+After=network.target
+
+[Service]
+User={{ prometheus_user }}
+Group={{ prometheus_user }}
+
+ExecStart={{ prometheus_binary }} \
+  --config.file={{ prometheus_config_dir }}/prometheus.yml
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
