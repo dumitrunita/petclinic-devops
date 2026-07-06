@@ -43,3 +43,4 @@ prometheus_user: prometheus
 prometheus_config_dir: /etc/prometheus
 prometheus_binary: /usr/local/bin/prometheus
 prometheus_port: 9090
+
